@@ -3,9 +3,10 @@ provider "aws" {
   region = "us-west-2"
 }
 
-# Create a VPC
- resource "aws_vpc" "main_vpc" {
-   cidr_block = "10.0.0.0/16"
+# Create a VPC with an invalid CIDR block
+resource "aws_vpc" "main_vpc" {
+  cidr_block = "10.0.0.0/33"  # ❌ Invalid CIDR block
+
   tags = {
     Name = "main_vpc"
   }
